@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using blog.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace blog
 {
@@ -30,7 +32,8 @@ namespace blog
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddDbContext<DatabaseContext>(options =>
+            options.UseSqlite(Configuration.GetConnectionString("BlogContext")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

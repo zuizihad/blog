@@ -1,0 +1,59 @@
+@model IEnumerable<blog.Models.Comments>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.commentAuthor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.commentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isHidden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.commentAuthorEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.commentDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.commentAuthor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.commentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isHidden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.commentAuthorEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.commentDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.authorId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.authorId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.authorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

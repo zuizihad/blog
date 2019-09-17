@@ -1,0 +1,54 @@
+@model blog.Models.myBlog
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>myBlog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="blogId" />
+            <div class="form-group">
+                <label asp-for="blogTitle" class="control-label"></label>
+                <input asp-for="blogTitle" class="form-control" />
+                <span asp-validation-for="blogTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagePath" class="control-label"></label>
+                <input asp-for="imagePath" class="form-control" />
+                <span asp-validation-for="imagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="blogDescription" class="control-label"></label>
+                <input asp-for="blogDescription" class="form-control" />
+                <span asp-validation-for="blogDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="blogDateTime" class="control-label"></label>
+                <input asp-for="blogDateTime" class="form-control" />
+                <span asp-validation-for="blogDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="isPublished" /> @Html.DisplayNameFor(model => model.isPublished)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
